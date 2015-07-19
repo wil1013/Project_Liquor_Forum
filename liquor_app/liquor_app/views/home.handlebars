@@ -1,0 +1,33 @@
+
+<div class="logger"> 
+	 <form action="/users" method="POST" style="clear: left; text-align: center;">	
+		<input type="hidden" name="_method" value="PUT">
+			<input type="text" name="name" placeholder="User Name"><br>
+			<input type="text" name="password" placeholder="Password"><br>
+		<input type="submit" value="Submit"><br>
+	<a href="/users/new">Register</a>
+	</form>
+
+</div>
+
+
+
+
+  <head>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      function initialize() {
+        var mapCanvas = document.getElementById('map-canvas');
+        var mapOptions = {
+          center: new google.maps.LatLng(40.740083, -73.990070),
+          zoom: 12,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+        var map = new google.maps.Map(mapCanvas, mapOptions)
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+  </head>
+  
+    <div id="map-canvas"></div>
+

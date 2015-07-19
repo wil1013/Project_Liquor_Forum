@@ -1,0 +1,16 @@
+<h1 style="text-align: center; clear: left;">
+  Welcome to the paintings page
+</h1>
+{{#each paintings}}
+  <div class="single box">
+    <a href="/paintings/{{id}}">
+      <img src="{{img_url}}" width="400" height="400">
+    </a>  
+  </div>
+{{/each}}
+
+<div class="nav">
+  <a href="/paintings/new">
+    Add a new painting
+  </a>
+</div>

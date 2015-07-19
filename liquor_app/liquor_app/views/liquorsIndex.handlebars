@@ -1,0 +1,24 @@
+<h1>
+	Welcome to the Liquor page
+</h1>
+
+{{#each liquors}}
+	<div class="single box">
+		<h3>
+			<a href="/liquors/{{id}}">{{liq_name}}</a>
+		</h3>
+		<a href="/liquors/{{id}}">
+			<img src="{{img_url}}" alt="" width="200" height="200">
+		</a>	
+		<p>{{liquor_type}}</p>
+		<p>{{user_id}}</p>
+
+		
+	</div>
+{{/each}}
+
+<div class="nav">
+	<a href="/liquors/new">
+		Add A New Liquor Type
+	</a>
+</div>
