@@ -1,5 +1,7 @@
 var pg = require('pg');
-var dbUrl = 'pg://localhost/liquor_app';
+//var dbUrl = 'pg://localhost/liquor_app';
+var dburl = process.env.DATABASE_URL;
+
 
 module.exports = {
   end: function() {

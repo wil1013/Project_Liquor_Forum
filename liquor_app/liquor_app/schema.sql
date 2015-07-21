@@ -19,16 +19,16 @@ CREATE TABLE liquors(
   id SERIAL PRIMARY KEY, 
   liq_name VARCHAR(255),
   img_url TEXT,
-  user_id VARCHAR(255) references users,
+  user_id SERIAL references users,
   description VARCHAR(255)
 );
 
 CREATE TABLE threads(
   id SERIAL PRIMARY KEY, 
   title VARCHAR(255),
-  liquor_id INTEGER references liquors,
+  liquor_id SERIAL references liquors,
   comment VARCHAR(255),
   view_count INTEGER,
   comment_count INTEGER,
-  user_id INTEGER references users
+  user_id SERIAL references users
 );

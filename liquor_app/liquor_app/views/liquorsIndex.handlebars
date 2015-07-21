@@ -1,17 +1,18 @@
 <h1>
-	Welcome to the Liquor page
+	List of Bourbons
 </h1>
 
 {{#each liquors}}
-	<div class="single box">
+	<div class="liqSingleBox">
 		<h3>
-			<a href="/liquors/{{id}}">{{liq_name}}</a>
+			<a class='liqHead' href="/liquors/{{id}}">{{liq_name}}</a>
 		</h3>
 		<a href="/liquors/{{id}}">
 			<img src="{{img_url}}" alt="" width="200" height="200">
+			<a id="liqDesc" > Description :{{description}}</a>
 		</a>	
-		<p>Type :{{liquor_type}}</p>
 		<p>Added By User : {{user_id}}</p>
+
 
 		
 	</div>

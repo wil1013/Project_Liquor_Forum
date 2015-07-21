@@ -1,0 +1,28 @@
+<h1>
+	Threadssssssssss
+</h1>
+
+{{#each threads}}
+	<div class="liqSingleBox">
+		<h3>
+			<a class='liqHead' href="/liquors/{{id}}">{{title}}</a>
+		</h3>
+		<a href="/threads/{{id}}">
+			
+			<a id="liqDesc" > Title :{{title}}</a>
+			<a id="liqDesc" > {{comment}}</a>
+		</a>	
+		<p>Added By User : {{user_id}}</p>
+		<p>View Count : {{view_count}}</p>
+		<p>Comment Count : {{comment_count}}</p>
+
+
+		
+	</div>
+{{/each}}
+
+<div class="nav">
+	<a href="/threads/new">
+		Add A New Thread
+	</a>
+</div>

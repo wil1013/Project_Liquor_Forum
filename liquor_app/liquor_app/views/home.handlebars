@@ -1,12 +1,4 @@
-<div class="logger"> 
-	 <form action="/login" method="POST" style="clear: left; text-align: center;">	
-			<input type="text" name="name" placeholder="User Name"><br>
-			<input type="text" name="password" placeholder="Password"><br>
-		<input type="submit" value="Submit"><br>
-	<a href="/users/new">Register</a>
-	</form>
 
-</div>
 <div>{{name}}</div>
 
 
@@ -14,16 +6,48 @@
   <head>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script>
-      function initialize() {
-        var mapCanvas = document.getElementById('map-canvas');
+      $(function() {
+        $.get('/getUsersForMap', function (userJSON) {
+          console.log(userJSON);
+         initialize(userJSON); 
+        });
+      });
+      function initialize(JSON) {
+        var startingPosition = new google.maps.LatLng(40.740083, -73.990070);
+
         var mapOptions = {
-          center: new google.maps.LatLng(40.740083, -73.990070),
-          zoom: 13,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          zoom : 13,
+          center : startingPosition
+        };
+
+        var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        var infowindow = new google.maps.InfoWindow();
+
+        for(var i = 0; i < JSON.length; i++) {
+          var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(JSON[i].latitude, JSON[i].longitude),
+            map: map
+            // icon: {url:JSON[i].img_url,
+            //         size: new google.maps.Size(20, 32)
+            //       }
+          });
+
+          google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+              infowindow.setContent(JSON[i].name);
+              // infowindow.setContent(markerContent);
+              infowindow.open(map, marker);
+            }
+          })(marker, i));
         }
-        var map = new google.maps.Map(mapCanvas, mapOptions)
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
+        // var marker = new google.maps.Marker({
+        //   position : generalAssemblyCoords,
+        //   map : map,
+        //   title : "General Assembly"
+        // });
+      }           
+      google.maps.event.addDomListener(window, 'load', initialize);  
     </script>
   </head>
   
@@ -33,12 +57,23 @@
     <div>{{name}} {{password}}</div>
     {{/each}}
 
-<iframe id="gmaph" 
-  width="600"
-  height="450"
-  frameborder="0" style="border:0"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDXVySrtOJ18B_Pt05cia9LFjd4MnxYLls
-    &q=general+assembly+nyc",allowfullscreen>
-</iframe>
+<div class="logger"> 
+   <form action="/login" method="POST"> 
+      <input type="text" name="name" placeholder="User Name"><br>
+      <input type="text" name="password" placeholder="Password"><br>
+    <input type="submit" value="Submit"><br>
+  <a href="/users/new">Register</a>
+  </form>
 
+</div>
 
+{{!--       //   var mapCanvas = document.getElementById('map-canvas');
+      //   var mapOptions = {
+      //     center: new google.maps.LatLng(40.740083, -73.990070),
+      //     zoom: 13,
+      //     mapTypeId: google.maps.MapTypeId.ROADMAP
+      //   }
+      //   var map = new google.maps.Map(mapCanvas, mapOptions)
+      // }
+      // google.maps.event.addDomListener(window, 'load', initialize);
+ --}}

@@ -19,9 +19,12 @@ var path = require('path');
 var db = require('./db.js');
 
 
+//app.listen(3000);
 
-
-app.listen(3000);
+app.set('port', (process.env.PORT || 3000));
+app.listen(app.get('port'), function(){
+  console.log("app running on port : ", app.get('port'));
+}
 
 // app.use(session({
 //   cookieName: 'session',
@@ -64,6 +67,9 @@ fs.readdirSync('./controllers').forEach(function (file) {
 
 //ROOT ROUTE
 app.get('/', function (req, res) {
-  res.render('home');
+  var userObject = {
+    username : req.session.signed_in_username
+  };
+  res.render('home', userObject);
 });
 

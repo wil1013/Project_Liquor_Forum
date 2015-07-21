@@ -31,6 +31,13 @@ module.exports.controller = function(app) {
     });
   });
 
+  // User JSON for Maps
+  app.get('/getUsersForMap', function (req, res) {
+    User.all(function (data) {
+      res.send(data);
+    });
+  });
+
 
   //user - NEW
   app.get('/users/new', function (req, res) {

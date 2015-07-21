@@ -5,10 +5,13 @@
 <div class="newUserReg">
 	<form  action="/users" method="POST">
 		<input type="text" name="name" placeholder="User Name"><br>
-		<input type="text" name="zipcode" placeholder="Zip Code"><br>
+		<input type="text" name="password" placeholder="Password"><br>
 		<input type="text" name="email" placeholder="Email"><br>
-		<input type="text" name="img_url" placeholder="Picture"><br>	
-		<input type="text" id="latitude" name="password" value=" " placeholder="latLong"><br>		
+		<input type="text" name="img_url" placeholder="Picture"><br>
+    <input type="text" name="city" placeholder="City"><br>
+    <input type="text" name="state" placeholder="State"><br>
+		<input type="text" id="latitude" name="latitude" value="" placeholder="Latitude"><br>
+    <input type="text" id="longitude" name="longitude" value="" placeholder="Longitude"><br>		
 		<input type="submit" value="Submit"><br>
 	</form>
 </div>
@@ -38,6 +41,7 @@
 
 <script>
 var x = document.getElementById("latitude");
+var z = document.getElementById("longitude");
 var y = document.getElementById("gmap");
 
 function getLocation() {
@@ -49,8 +53,10 @@ function getLocation() {
 }
 
 function showPosition(position) {
-    x.placeholder = position.coords.latitude+","+position.coords.longitude;
-    x.value= position.coords.latitude+","+position.coords.longitude;
+    x.placeholder = position.coords.latitude;
+    z.placeholder = position.coords.longitude;
+    x.value= position.coords.latitude;
+    z.value= position.coords.longitude;
     y.src ="https://www.google.com/maps/embed/v1/place?key=AIzaSyDXVySrtOJ18B_Pt05cia9LFjd4MnxYLls&q="+position.coords.latitude+","+position.coords.longitude
 }
 
