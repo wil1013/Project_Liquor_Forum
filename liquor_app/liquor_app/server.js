@@ -1,13 +1,24 @@
+
+
+//////////////
 var root = __dirname;
+
+var session = require('express-session');
+var cookieParser = require('cookie-parser'); // the session is stored in a cookie, so we use this to parse it
+
 var express = require('express');
 var fs = require('fs');
 var app = express();
+app.use(cookieParser());
+app.use(session({ secret: 'app', cookie: { maxAge: 60000 }}));
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var methodOverride = require('method-override');
 var logger = require('morgan');
 var path = require('path');
 var db = require('./db.js');
+
+
 
 
 app.listen(3000);
@@ -26,6 +37,13 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(express.static('public'));
 app.use(logger('dev'));
+
+//use sessions
+app.use(session({
+  secret: 'thisisitotallysecret',
+  saveUninitialized: false,
+  resave: false
+}));
 
 app.use(methodOverride(function(req, res) {
  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
@@ -48,3 +66,4 @@ fs.readdirSync('./controllers').forEach(function (file) {
 app.get('/', function (req, res) {
   res.render('home');
 });
+

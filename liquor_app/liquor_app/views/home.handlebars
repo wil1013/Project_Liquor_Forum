@@ -1,7 +1,5 @@
-
 <div class="logger"> 
-	 <form action="/users" method="POST" style="clear: left; text-align: center;">	
-		<input type="hidden" name="_method" value="PUT">
+	 <form action="/login" method="POST" style="clear: left; text-align: center;">	
 			<input type="text" name="name" placeholder="User Name"><br>
 			<input type="text" name="password" placeholder="Password"><br>
 		<input type="submit" value="Submit"><br>
@@ -9,7 +7,7 @@
 	</form>
 
 </div>
-
+<div>{{name}}</div>
 
 
 
@@ -20,7 +18,7 @@
         var mapCanvas = document.getElementById('map-canvas');
         var mapOptions = {
           center: new google.maps.LatLng(40.740083, -73.990070),
-          zoom: 12,
+          zoom: 13,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         var map = new google.maps.Map(mapCanvas, mapOptions)
@@ -30,4 +28,17 @@
   </head>
   
     <div id="map-canvas"></div>
+
+    {{#each users}}
+    <div>{{name}} {{password}}</div>
+    {{/each}}
+
+<iframe id="gmaph" 
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDXVySrtOJ18B_Pt05cia9LFjd4MnxYLls
+    &q=general+assembly+nyc",allowfullscreen>
+</iframe>
+
 

@@ -1,13 +1,10 @@
-<div>
-	<h3>
-		<a href="/liquors/{{liquors.id}}">
-			{{liquors.liq_name}}
-		</a>
-	</h3>
-	<a href="/liquors/{{liquors.id}}">
-		<img src={{liquors.img_url}}>
-	</a>	
-	<p>{{liquor_type}}</p>
-</div>
+
+	<div id="showBrand">
+		<p class="banner">{{liquor.liq_name}}</p>	
+		<a href="/liquors/{{liquor.id}}">
+			<img src={{liquor.img_url}}>
+		</a>	
+		<p>Added By : {{user.name}}</p><img class="thumb" src={{user.img_url}}>
+	</div>
 
 	

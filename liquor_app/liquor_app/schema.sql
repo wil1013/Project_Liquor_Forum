@@ -6,25 +6,28 @@ DROP TABLE IF EXISTS threads CASCADE;
 CREATE TABLE users(
   id SERIAL PRIMARY KEY, 
   name VARCHAR(255),
-  password VARCHAR(4),
+  password VARCHAR(255),
   img_url TEXT, 
   email VARCHAR(255),
-  zipcode INTEGER
+  latitude VARCHAR(255),
+  longitude VARCHAR(255),
+  city VARCHAR(255),
+  state VARCHAR(255)
 );
 
 CREATE TABLE liquors(
   id SERIAL PRIMARY KEY, 
   liq_name VARCHAR(255),
-  liquor_type VARCHAR(255),
   img_url TEXT,
-  user_id VARCHAR(255) 
+  user_id VARCHAR(255) references users,
+  description VARCHAR(255)
 );
 
 CREATE TABLE threads(
   id SERIAL PRIMARY KEY, 
   title VARCHAR(255),
   liquor_id INTEGER references liquors,
-  text VARCHAR(255),
+  comment VARCHAR(255),
   view_count INTEGER,
   comment_count INTEGER,
   user_id INTEGER references users

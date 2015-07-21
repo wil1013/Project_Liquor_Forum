@@ -2,16 +2,58 @@
 	User Registration Page
 </h1>
 
-<div class="logger">
+<div class="newUserReg">
 	<form  action="/users" method="POST">
 		<input type="text" name="name" placeholder="User Name"><br>
-		<input type="text" name="password" placeholder="Password"><br>
+		<input type="text" name="zipcode" placeholder="Zip Code"><br>
 		<input type="text" name="email" placeholder="Email"><br>
 		<input type="text" name="img_url" placeholder="Picture"><br>	
-		<input type="text" name="zipcode" placeholder="Zip Code"><br>		
+		<input type="text" id="latitude" name="password" value=" " placeholder="latLong"><br>		
 		<input type="submit" value="Submit"><br>
 	</form>
 </div>
 
 
+<iframe id="gmap" 
+  width="600"
+  height="450"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyDXVySrtOJ18B_Pt05cia9LFjd4MnxYLls
+    &q=nyc",allowfullscreen>
+</iframe>
+
+<div class="logger"> 
+   <form action="/login" method="POST" style="clear: left; text-align: center;">  
+      <input type="text" name="name" placeholder="User Name"><br>
+      <input type="text" name="password" placeholder="Password"><br>
+    <input type="submit" value="Submit"><br>
+  <a href="/users/new">Register</a>
+  </form>
+
+<button onclick="getLocation()">Get Location</button>
+
+
+<p id="location"> Click For Location</p>
+
+
+<script>
+var x = document.getElementById("latitude");
+var y = document.getElementById("gmap");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+}
+
+function showPosition(position) {
+    x.placeholder = position.coords.latitude+","+position.coords.longitude;
+    x.value= position.coords.latitude+","+position.coords.longitude;
+    y.src ="https://www.google.com/maps/embed/v1/place?key=AIzaSyDXVySrtOJ18B_Pt05cia9LFjd4MnxYLls&q="+position.coords.latitude+","+position.coords.longitude
+}
+
+</script>
+$ curl ipinfo.io/8.8.8.8/city
 

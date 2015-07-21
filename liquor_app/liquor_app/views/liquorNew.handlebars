@@ -3,14 +3,34 @@
 </h1>
 
 <div class="logger">
-	<form  action="/liquors" method="POST">
+	<form  action="/liquors" method="POST" id="liqForm">
 		<input type="text" name="liq_name" placeholder="Liquor Name"><br>
 		<input type="text" name="liquor_type" placeholder="Liquor Type"><br>
 		<input type="text" name="img_url" placeholder="Picture"><br>
-		<input type="text" name="user_id" placeholder="User ID"><br>	
+		<input type="text" name="user_id" placeholder="User ID"><br>
+		<textarea rows="25" cols="100" name="comment">
+Enter Description here...</textarea><br>	
 		<input type="submit" value="Submit"><br>
 	</form>
 </div>
 
+    <form id="form1" runat="server">
+        <input type='file' id="imgInp" onchange="readURL(this)"/>
+        <img id="blah" src="#" alt="your image" />
+    </form>
 
+<script>
+	function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+             var x = document.getElementById('#blah')
+                x.attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 

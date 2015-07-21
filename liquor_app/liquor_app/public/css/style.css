@@ -5,7 +5,9 @@ body {
   height: 100%;
   font-family: Raleway;
   font-weight: 300; 
-  background: url(http://i.imgur.com/LOQfigB.png);
+  background-color: brown;
+  opacity: .9;
+  /*background: url(http://i.imgur.com/LOQfigB.png);*/
 }
 
 #container {
@@ -14,10 +16,10 @@ body {
   margin: 0 auto;
 }
 
-#home_banner{
+.banner{
 color : whitesmoke;
-text-align: center;
-font-size: 400px;
+text-align: right;
+font-size: 100px;
 
 }
 .nav {
@@ -82,15 +84,33 @@ img {
   margin : 0 auto;
   margin-bottom: 50px; 
 }
-.logger form{
+.newUserReg form{
   font-size: 25px;
   position: relative;
   top: 100px;
   width: 200px;
   height: 150px;
-  background-color: white;
   margin: 0 auto;
+}
+
+.logger{
+  font-size: 25px;
+  top: 100px;
+  width: 200px;
+  height: 150px;
 }
 input{
 text-align: center;
+width: 400px;
+height: 30px;
+}
+
+.thumb{
+  height: 100px;
+  width: 125px;
+  margin-left: 75px;
+  border-radius: 10%;
+}
+#showBrand{
+  float: left;
 }

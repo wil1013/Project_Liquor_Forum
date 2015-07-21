@@ -1,14 +1,36 @@
-
+///////////
 var User = require('../models/user.js').User;
 
 module.exports.controller = function(app) {
 
+ //User Login / Start Session
+
+ app.post('/login', function(req,res){
+  User.findByColumn('users', 'name', req.body.name, function(data){
+    console.log('this is the data', data);
+    if (req.body.password_digest == data[0].password_digest){
+      req.session.signed_in_user_id = data[0].id;
+      req.session.signed_in_username = data[0].username;
+      console.log(req.session);
+        var sessionData ={
+          user_id: req.session.signed_in_user_id,
+          username: req.session.signed_in_username
+        };
+      res.render('loggedIn',data);
+    } else {
+      res.redirect('/');
+  }
+});
+});
+
   // User INDEX PAGE
-  // app.get('/users', function (req, res) {
-  //   User.all(function( data ){
-  //     res.render('userIndex', { users : data } );
-  //   });
-  // });
+ 
+  app.get('/users', function (req, res) {
+    User.all(function( data ){
+      res.render('userIndex', { users : data } );
+    });
+  });
+
 
   //user - NEW
   app.get('/users/new', function (req, res) {
@@ -39,14 +61,14 @@ module.exports.controller = function(app) {
   //user - UPDATE
   app.put("/users/:id", function (req, res) {
    User.update(req.params.id, req.body, function (data) {
-     res.redirect('/users/' + req.params.id)
+     res.redirect('/users/' + req.params.id);
    });
-  })
+  });
 
   //user - DELETE
   app.delete("/users/:id", function (req, res) {
    User.delete( req.params.id, function (data) {
     res.redirect('/users');
    });
-  })
-}
+  });
+};

@@ -1,0 +1,25 @@
+<h1>
+	Welcome to the User page
+</h1>
+
+{{#each users}}
+	<div class="single box">
+		<h3>
+			<a href="/users/{{id}}">{{name}}</a>
+		</h3>
+		<a href="/users/{{id}}">
+			<img src="{{img_url}}" alt="" width="200" height="200">
+		</a>	
+		<p>{{email}}</p>
+		<p>{{zipcode}}</p>
+		<p>{{id}}</p>
+
+		
+	</div>
+{{/each}}
+
+<div class="nav">
+	<a href="/liquors/new">
+		Add A New Liquor Type
+	</a>
+</div>

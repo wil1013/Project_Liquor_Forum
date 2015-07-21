@@ -10,7 +10,7 @@ module.exports.Liquor = {
 
   find : function(id, callback){
     db.find('liquors', id, function (data) {
-      callback( data[0] );
+      callback( data );
     });
   },
 
@@ -33,27 +33,15 @@ module.exports.Liquor = {
   },
 
   getWithLiquors : function( id, callback){
-    db.find('liquors', id, function (userData) {
-      db.findRelations('users', 'id', id, function (liquorData) {
+    db.find('liquors', id, function (liquorData) {
+      db.findRelations('users','id', liquorData[0].user_id, function (userData) {
         var liquorObj = {
-          user: userData[0],
-          liquors: liquorData
+          user: userData[0], //[0]
+          liquor: liquorData[0]
         };
 
         callback( liquorObj );
       });
     });
   }
-// getWithThreads : function( id, callback){
-//     db.find('liquors', id, function (userData) {
-//       db.findRelations('threads', 'user_id', id, function (threadData) {
-//         var userObj = {
-//           user: userData[0],
-//           threads: threadData
-//         };
-
-//         callback( userObj );
-//       });
-//     });
-// 	}
 };
