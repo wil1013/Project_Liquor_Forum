@@ -34,15 +34,18 @@ module.exports.Thread = {
 
   getWithLiquors : function( id, callback){
     db.find('threads', id, function (threadData) {
-      db.findRelations('liquors', 'user_id', id, function (liquorData) {
+      db.findRelations('liquors', 'user_id', threadData[0].user_id, function (liquorData) {
+        db.findRelations('users','id', threadData[0].user_id,function (userData){
         var threadObj = {
           thread: threadData[0],
-          liquors: liquorData
+          liquor: liquorData[0],
+          user : userData[0]
         };
-
-        callback( userObj );
+        console.log(threadObj);
+        callback( threadObj );
+        });
       });
-    });
+     });
   }
 
 // getWithThreads : function( id, callback){

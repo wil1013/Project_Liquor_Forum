@@ -3,18 +3,15 @@
 </h1>
 
 {{#each liquors}}
-	<div class="liqSingleBox">
+	<div class="liqIndexBoxes">
 		<h3>
-			<a class='liqHead' href="/liquors/{{id}}">{{liq_name}}</a>
+			<a class='liqHead' id="liqshow" href="/liquors/{{id}}">{{liq_name}}</a>
 		</h3>
 		<a href="/liquors/{{id}}">
-			<img src="{{img_url}}" alt="" width="200" height="200">
+			<img  class="oneBottle" src="{{img_url}}" alt="" width="200" height="200">
 			<a id="liqDesc" > Description :{{description}}</a>
 		</a>	
 		<p>Added By User : {{user_id}}</p>
-
-
-		
 	</div>
 {{/each}}
 

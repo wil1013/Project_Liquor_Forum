@@ -1,10 +1,12 @@
 
-	<div id="showBrand">
+	<div class="liqSingleBox">
 		<p class="banner">{{thread.title}}</p>	
-			<img src={{liquor.img_url}}>
-		</a>	
-		<p>Added By : {{thread.user_id}}</p>
-		<img class="thumb" src={{user.img_url}}>
+		<img src={{liquor.img_url}}>
+		<p>Liquor Mentioned: {{liquor.liq_name}}</p>
+		<p>Added By : {{user.name}}</p>	<img class="thumb" src={{user.img_url}}>
+		<p>{{user.city}}, {{user.state}}</p>
+		<p id="liqDesc">{{thread.comment}}</p>
+		
 	</div>
 
 <div class="threader">

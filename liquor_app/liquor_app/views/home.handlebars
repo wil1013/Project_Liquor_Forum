@@ -4,7 +4,8 @@
 
 
   <head>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    {{!-- // <script src="https://maps.googleapis.com/maps/api/js"></script> --}}
     <script>
       $(function() {
         $.get('/getUsersForMap', function (userJSON) {
@@ -27,7 +28,8 @@
         for(var i = 0; i < JSON.length; i++) {
           var marker = new google.maps.Marker({
             position: new google.maps.LatLng(JSON[i].latitude, JSON[i].longitude),
-            map: map
+            map: map,
+            animation: google.maps.Animation.DROP,
             // icon: {url:JSON[i].img_url,
             //         size: new google.maps.Size(20, 32)
             //       }
@@ -57,16 +59,15 @@
     <div>{{name}} {{password}}</div>
     {{/each}}
 
+
 <div class="logger"> 
-   <form action="/login" method="POST"> 
+   <form action="/" method="GET"> 
       <input type="text" name="name" placeholder="User Name"><br>
       <input type="text" name="password" placeholder="Password"><br>
     <input type="submit" value="Submit"><br>
-  <a href="/users/new">Register</a>
   </form>
-
 </div>
-
+<a id="reg" href="/users/new">Register</a>
 {{!--       //   var mapCanvas = document.getElementById('map-canvas');
       //   var mapOptions = {
       //     center: new google.maps.LatLng(40.740083, -73.990070),

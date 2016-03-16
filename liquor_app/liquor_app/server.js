@@ -19,12 +19,12 @@ var path = require('path');
 var db = require('./db.js');
 
 
-//app.listen(3000);
+// app.listen(3000);//local
 
-app.set('port', (process.env.PORT || 3000));
+app.set('port', (process.env.PORT || 3000));//for online
 app.listen(app.get('port'), function(){
   console.log("app running on port : ", app.get('port'));
-}
+});
 
 // app.use(session({
 //   cookieName: 'session',
@@ -70,6 +70,7 @@ app.get('/', function (req, res) {
   var userObject = {
     username : req.session.signed_in_username
   };
+  console.log(userObject);
   res.render('home', userObject);
 });
 

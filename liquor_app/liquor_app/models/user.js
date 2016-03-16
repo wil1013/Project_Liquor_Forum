@@ -43,8 +43,24 @@ module.exports.User = {
         callback( userObj );
       });
     });
+  },
+  findByColumn: function(table, col, value, cb) {
+    db.findByColumn( table, col, value,function(colData){
+      var sessData ={
+        session : colData
+      };
+    });
   }
-// getWithThreads : function( id, callback){
+        // pg.connect(dbUrl, function (err, client, done){
+        //     client.query('SELECT * FROM ' + table + ' WHERE ' + col + '=\'' + value + '\'', function (err, result){
+        //         done();
+        //         console.log('SELECT * FROM ' + table + ' WHERE ' + col + '=\'' + value + '\'');
+        //         cb(result.rows);
+        //     });
+        // });
+        // this.end();
+    //}
+// getW : function( id, callback){
 //     db.find('users', id, function (userData) {
 //       db.findRelations('threads', 'user_id', id, function (threadData) {
 //         var userObj = {
@@ -55,7 +71,7 @@ module.exports.User = {
 //         callback( userObj );
 //       });
 //     });
-// 	}
+// }
 
 
 

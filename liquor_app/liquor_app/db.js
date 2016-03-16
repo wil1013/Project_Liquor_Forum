@@ -1,6 +1,6 @@
 var pg = require('pg');
-//var dbUrl = 'pg://localhost/liquor_app';
-var dburl = process.env.DATABASE_URL;
+var dbUrl = 'pg://localhost/liquor_app';
+// var dbUrl = process.env.DATABASE_URL; //online
 
 
 module.exports = {

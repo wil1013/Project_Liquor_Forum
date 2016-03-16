@@ -1,13 +1,13 @@
 
 	<div id="showBrand">
-		<p class="banner">{{liquor.liq_name}}</p>	
-		<a id="singleImage" href="/liquors/{{liquor.id}}">
+		<p class="banner1">{{liquor.liq_name}}</p>	
+		<a id="singleImage1" href="/liquors/{{liquor.id}}">
 			<img src={{liquor.img_url}}>
 		</a>	
 		<p>Added By : {{user.name}}</p><img class="thumb" src={{user.img_url}}>
 	</div>
 
-<div class="threader">
+<div class="threader2">
 	<form  action="/threads" method="POST" id="liqForm">
 		<input type="text" name="title" placeholder="Create New Thread"><br>
 		<textarea rows="25" cols="100" name="comment" placeholder="Enter Text Here..."></textarea><br>

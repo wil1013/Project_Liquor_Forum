@@ -8,19 +8,18 @@ module.exports.controller = function(app) {
  app.post('/login', function(req,res){
   User.findByColumn('users', 'name', req.body.name, function(data){
     console.log('this is the data', data);
-    if (req.body.password_digest == data[0].password_digest){
-      req.session.signed_in_user_id = data[0].id;
-      req.session.signed_in_username = data[0].username;
-      console.log(req.session);
-        var sessionData ={
-          user_id: req.session.signed_in_user_id,
-          username: req.session.signed_in_username
-        };
-      res.render('loggedIn',data);
-    } else {
-      res.redirect('/');
-  }
-});
+    // if (req.body.password_digest == data[0].password_digest){
+    //   req.session.signed_in_user_id = data[0].id;
+    //   req.session.signed_in_username = data[0].username;
+    //   console.log(req.session);
+    //     var sessionData ={
+    //       user_id: req.session.signed_in_user_id,
+    //       username: req.session.signed_in_username
+    //     };
+    //   res.render('home',sessionData);
+    // } else {
+      res.render('home',data);
+  });
 });
 
   // User INDEX PAGE
